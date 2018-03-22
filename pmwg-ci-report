@@ -14,7 +14,10 @@ ABBREV=12
 # Get the git description conforming to kernelci
 GIT_DESCR=$(git describe --abbrev=$ABBREV)
 # Build the url
-KERNELCI_URL=https://storage.kernelci.org/pmwg/integ/$GIT_DESCR/build-logs-summary.txt
+if [ -z $KERNELCI_BASE_URL ]; then
+	KERNELCI_BASE_URL=https://storage.kernelci.org/pmwg/integ
+fi
+KERNELCI_URL=$KERNELCI_BASE_URL/$GIT_DESCR/build-logs-summary.txt
 
 BLAME_SCRIPT=pmwg-ci-blame
 

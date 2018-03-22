@@ -4,7 +4,10 @@
 # where the repository is located, otherwise default to the current
 # directory
 REPOPATH=${1:-$PWD}
-TESTPATH=/home/pmwg.ci/Tools/ktest_config/
+
+if [ -z $TESTPATH ]; then
+	TESTPATH=/home/pmwg.ci/Tools/ktest_config/
+fi
 
 
 # Move into the test directory of the repo
